@@ -8,14 +8,19 @@ public class Util {
     private static final String url = "jdbc:mysql://localhost:3306/mytestdb?autoReconnect=true&useSSL=false";
     private static final String login = "root";
     private static final String password = "zhypar_1234";
+    private static Connection connection = null;
+    private static  final  Util instance = new Util();
 
-    public Connection getConnection() {
-
-        Connection connection = null;
+    private Util(){
         try { connection = DriverManager.getConnection(url, login, password);
         } catch (SQLException e) {
-                e.printStackTrace();
+            e.printStackTrace();
         }
+    }
+    public static Util getInstance(){
+        return instance;
+    }
+    public static Connection getConnection() {
         return connection;
     }
 }

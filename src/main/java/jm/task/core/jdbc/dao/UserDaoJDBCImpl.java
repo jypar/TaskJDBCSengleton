@@ -8,8 +8,7 @@ import java.util.List;
 
 public class UserDaoJDBCImpl implements UserDao {
 
-    Util util = new Util();
-    Connection connection = util.getConnection();
+    Connection connection = Util.getInstance().getConnection();
 
     public UserDaoJDBCImpl() {
 
@@ -27,18 +26,15 @@ public class UserDaoJDBCImpl implements UserDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
 
     public void dropUsersTable() {
-
         try {
             Statement statement = connection.createStatement();
             statement.execute("DROP TABLE IF EXISTS users");
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
 
     public void saveUser(String name, String lastName, byte age) {
@@ -53,7 +49,6 @@ public class UserDaoJDBCImpl implements UserDao {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
     }
 
     public void removeUserById(long id) {
@@ -82,7 +77,6 @@ public class UserDaoJDBCImpl implements UserDao {
     }
 
     public void cleanUsersTable() {
-
         try {
             Statement statement = connection.createStatement();
             statement.execute("delete from users");
