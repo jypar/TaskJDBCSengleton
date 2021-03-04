@@ -1,2 +1,5 @@
 .idea/
 TaskJDBC.iml/
+.DS_Store
+target/
+TaskJDBC.iml/
